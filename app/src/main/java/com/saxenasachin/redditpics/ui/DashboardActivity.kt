@@ -15,7 +15,7 @@ import com.saxenasachin.redditpics.extensions.gone
 import com.saxenasachin.redditpics.extensions.viewModelProvider
 import com.saxenasachin.redditpics.extensions.visible
 import com.saxenasachin.redditpics.ui.base.BaseBindingActivity
-import com.saxenasachin.redditpics.ui.landing.LandingFragment
+import com.saxenasachin.redditpics.ui.imagelist.RedditPicsFragment
 import javax.inject.Inject
 
 /**
@@ -65,7 +65,7 @@ class DashboardActivity :
     }
 
     private fun loadLandingFragment() {
-        addFragment(R.id.mainFragmentContainer, LandingFragment.newInstance())
+        addFragment(R.id.mainFragmentContainer, RedditPicsFragment.newInstance(""))
     }
 
     override fun provideViewBinding(): ActivityDashboardBinding =
