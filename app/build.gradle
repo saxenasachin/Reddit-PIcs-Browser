@@ -1,0 +1,81 @@
+import dependencies.Dependencies
+import dependencies.Version
+
+apply plugin: Dependencies.Plugins.ANDROID_APPLICATION
+apply plugin: Dependencies.Plugins.KOTLIN_ANDROID
+apply plugin: Dependencies.Plugins.KOTLIN_ANDROID_EXTENSIONS
+apply plugin: Dependencies.Plugins.KOTLIN_KAPT
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion Version.compileSdk
+    buildToolsVersion Version.buildTools
+
+    defaultConfig {
+        applicationId "com.saxenasachin.redditpics"
+        minSdkVersion Version.minSdk
+        targetSdkVersion Version.targetSdk
+        versionCode Version.versionCode
+        versionName Version.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            debuggable false
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "BASE_URL", '"https://api.github.com/"'
+        }
+
+        debug {
+            debuggable true
+            buildConfigField "String", "BASE_URL", '"https://api.github.com/"'
+        }
+    }
+
+    viewBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation Dependencies.Kotlin.kotlin_stdlib_jdk7
+
+    //Modules
+    implementation project(Dependencies.Module.domain)
+    implementation project(Dependencies.Module.data)
+    implementation project(Dependencies.Module.remote)
+    implementation project(Dependencies.Module.presentation)
+
+    //Android X
+    implementation Dependencies.AndroidX.appcompat
+    implementation Dependencies.AndroidX.materialDesign
+    implementation Dependencies.AndroidX.constraintLayout
+    implementation Dependencies.AndroidX.vectorDrawable
+    implementation Dependencies.AndroidX.core
+    implementation Dependencies.AndroidX.legacySupport
+
+    //Testing
+    testImplementation Dependencies.Test.test_junit
+    androidTestImplementation Dependencies.Test.android_test_espresso_core
+
+    //LifeCycle
+    implementation Dependencies.Lifecycle.lifeCycleExtension
+
+    //RxJava
+    implementation Dependencies.RxJava.rxAndroid
+
+    //Dagger2
+    implementation Dependencies.Dagger.dagger2
+    implementation Dependencies.Dagger.daggerAndroid
+    implementation Dependencies.Dagger.daggerAndroidSupport
+    kapt Dependencies.Dagger.processor
+    kapt Dependencies.Dagger.compiler
+
+    //UI
+    implementation Dependencies.Picasso.picasso
+
+}

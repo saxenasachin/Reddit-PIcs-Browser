@@ -1,0 +1,6 @@
+include ':remote'
+rootProject.name = "Reddit Pics Browser"
+include ':presentation'
+include ':domain'
+include ':data'
+include ':app'
