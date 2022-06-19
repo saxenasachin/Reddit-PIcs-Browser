@@ -16,6 +16,7 @@ Created by Sachin Saxena on 19/06/22.
     modules = [
         ApplicationModule::class,
         BindingActivityModule::class,
+        BindingFragmentModule::class,
         DashboardActivityModule::class,
         ViewModelProviderModule::class,
         DomainModule::class,

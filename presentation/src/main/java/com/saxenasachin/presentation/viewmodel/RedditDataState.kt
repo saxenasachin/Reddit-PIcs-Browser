@@ -1,7 +1,6 @@
 package com.saxenasachin.presentation.viewmodel
 
-import com.saxenasachin.presentation.views.views.PullRequestView
-import com.saxenasachin.presentation.views.views.SingleRepoView
+import com.saxenasachin.presentation.views.views.RedditPicView
 
 sealed class RedditDataState {
 
@@ -11,11 +10,7 @@ sealed class RedditDataState {
 
     data class Error(val message: String) : RedditDataState()
 
-    data class GetUsersRepositoriesSuccess(
-        val lisOfRepos: List<SingleRepoView>
-    ) : RedditDataState()
-
-    data class GetPullRequestsSuccess(
-        val lisOfPullRequests: List<PullRequestView>
+    data class GetRedditPicsSuccess(
+        val data: RedditPicView
     ) : RedditDataState()
 }
