@@ -1,6 +1,6 @@
 package com.saxenasachin.domain.interactor.user_repos
 
-import com.saxenasachin.domain.GitRepository
+import com.saxenasachin.domain.RedditRepository
 import com.saxenasachin.domain.executor.PostExecutionThread
 import com.saxenasachin.domain.executor.ThreadExecutor
 import com.saxenasachin.domain.interactor.core.SingleUseCase
@@ -12,7 +12,7 @@ import javax.inject.Inject
 Created by Sachin Saxena on 19/06/22.
  */
 class GetUserRepositoryListUseCase @Inject constructor(
-    private val gitRepository: GitRepository,
+    private val redditRepository: RedditRepository,
     threadExecutor: ThreadExecutor,
     postExecutionThread: PostExecutionThread
 ) : SingleUseCase<GetUserRepositoryListUseCase.Params, List<GitSingleRepo>>(
@@ -21,7 +21,7 @@ class GetUserRepositoryListUseCase @Inject constructor(
 ) {
 
     override fun buildUseCaseObservable(requestValues: Params?): Single<List<GitSingleRepo>> {
-        return gitRepository.getUserGitRepositories(requestValues!!.username)
+        return redditRepository.getUserGitRepositories(requestValues!!.username)
     }
 
     /**

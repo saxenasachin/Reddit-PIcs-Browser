@@ -1,12 +1,15 @@
 package com.saxenasachin.presentation.viewmodel
 
 import androidx.lifecycle.MutableLiveData
+import com.saxenasachin.domain.interactor.piclist.GetPicsListUseCase
 import com.saxenasachin.domain.interactor.pullrequests.GetPullRequestListUseCase
 import com.saxenasachin.domain.interactor.user_repos.GetUserRepositoryListUseCase
+import com.saxenasachin.domain.models.piclist.RedditPicModel
 import com.saxenasachin.domain.models.pullrequest.PullRequest
 import com.saxenasachin.domain.models.repo.GitSingleRepo
 import com.saxenasachin.presentation.base.BaseViewModel
 import com.saxenasachin.presentation.views.mappers.git_repos.SingleGitRepoViewMapper
+import com.saxenasachin.presentation.views.mappers.piclist.SingleRedditPicViewMapper
 import com.saxenasachin.presentation.views.mappers.pull_requets.PullRequestViewMapper
 import io.reactivex.observers.DisposableSingleObserver
 import java.io.InterruptedIOException
@@ -23,7 +26,9 @@ class GitDataViewModel @Inject constructor(
     private val pullRequestViewMapper: PullRequestViewMapper,
     private val singleGitRepoViewMapper: SingleGitRepoViewMapper,
     private val getPullRequestListUseCase: GetPullRequestListUseCase,
-    private val getUserRepositoryListUseCase: GetUserRepositoryListUseCase
+    private val getUserRepositoryListUseCase: GetUserRepositoryListUseCase,
+    private val singleRedditPicViewMapper: SingleRedditPicViewMapper,
+    private val getPicsListUseCase: GetPicsListUseCase
 ) : BaseViewModel<RedditDataState>() {
 
     private var state: RedditDataState = RedditDataState.Init
@@ -61,6 +66,22 @@ class GitDataViewModel @Inject constructor(
                 state = RedditDataState.Error(e.transform().localizedMessage)
             }
         }, GetPullRequestListUseCase.Params(userName, repoName, prState))
+    }
+
+    fun getRedditPics() {
+        state = RedditDataState.Loading("Fetching Reddit Pics...")
+        getPicsListUseCase
+            .execute(object : DisposableSingleObserver<RedditPicModel>() {
+                override fun onSuccess(t: RedditPicModel) {
+                    state = RedditDataState.GetRedditPicsSuccess(
+                        singleRedditPicViewMapper.mapToView(t)
+                    )
+                }
+
+                override fun onError(e: Throwable) {
+                    state = RedditDataState.Error(e.transform().localizedMessage)
+                }
+            }, null)
     }
 
     fun resetState() {

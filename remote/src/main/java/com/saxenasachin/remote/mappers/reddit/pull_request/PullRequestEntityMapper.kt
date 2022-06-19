@@ -3,8 +3,8 @@ package com.saxenasachin.remote.mappers.reddit.pull_request
 import com.saxenasachin.data.models.PullRequestEntity
 import com.saxenasachin.remote.mappers.EntityMapper
 import com.saxenasachin.remote.mappers.reddit.user.UserEntityMapper
-import com.saxenasachin.remote.models.reddit.pr.GithubPullRequest
-import com.saxenasachin.remote.models.reddit.user.GithubUser
+import com.saxenasachin.remote.models.pr.GithubPullRequest
+import com.saxenasachin.remote.models.user.GithubUser
 import javax.inject.Inject
 
 class PullRequestEntityMapper @Inject constructor(private val userEntityMapper: UserEntityMapper) :

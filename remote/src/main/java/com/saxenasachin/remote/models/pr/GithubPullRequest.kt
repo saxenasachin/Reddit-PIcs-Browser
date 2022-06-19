@@ -1,7 +1,7 @@
-package com.saxenasachin.remote.models.reddit.pr
+package com.saxenasachin.remote.models.pr
 
 
-import com.saxenasachin.remote.models.reddit.user.GithubUser
+import com.saxenasachin.remote.models.user.GithubUser
 import com.google.gson.annotations.SerializedName
 
 data class GithubPullRequest(

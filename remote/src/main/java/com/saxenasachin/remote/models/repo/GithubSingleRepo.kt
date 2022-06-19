@@ -1,4 +1,4 @@
-package com.saxenasachin.remote.models.reddit.repo
+package com.saxenasachin.remote.models.repo
 
 
 import com.google.gson.annotations.SerializedName

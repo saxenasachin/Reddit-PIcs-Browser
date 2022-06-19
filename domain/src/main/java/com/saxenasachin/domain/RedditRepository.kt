@@ -1,5 +1,6 @@
 package com.saxenasachin.domain
 
+import com.saxenasachin.domain.models.piclist.RedditPicModel
 import com.saxenasachin.domain.models.pullrequest.PullRequest
 import com.saxenasachin.domain.models.repo.GitSingleRepo
 import io.reactivex.Single
@@ -7,7 +8,7 @@ import io.reactivex.Single
 /**
 Created by Sachin Saxena on 19/06/22.
  */
-interface GitRepository {
+interface RedditRepository {
 
     fun getUserGitRepositories(username: String): Single<List<GitSingleRepo>>
 
@@ -16,4 +17,6 @@ interface GitRepository {
         repoName: String,
         state: PullRequest.State = PullRequest.State.ALL
     ): Single<List<PullRequest>>
+
+    fun getRedditPics(): Single<RedditPicModel>
 }

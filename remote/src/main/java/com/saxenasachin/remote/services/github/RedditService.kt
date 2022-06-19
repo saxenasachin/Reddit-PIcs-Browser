@@ -1,7 +1,8 @@
 package com.saxenasachin.remote.services.github
 
-import com.saxenasachin.remote.models.reddit.pr.GithubPullRequest
-import com.saxenasachin.remote.models.reddit.repo.GithubSingleRepo
+import com.saxenasachin.remote.models.pics.RedditPic
+import com.saxenasachin.remote.models.pr.GithubPullRequest
+import com.saxenasachin.remote.models.repo.GithubSingleRepo
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -22,9 +23,5 @@ interface RedditService {
     ): Single<List<GithubPullRequest>>
 
     @GET("/r/pics/.json")
-    fun getRedditPics(
-        @Path("username") username: String,
-        @Path("repo_name") repoName: String,
-        @Query("state") state: String = "all"
-    ): Single<List<GithubPullRequest>>
+    fun getRedditPics(): Single<RedditPic>
 }

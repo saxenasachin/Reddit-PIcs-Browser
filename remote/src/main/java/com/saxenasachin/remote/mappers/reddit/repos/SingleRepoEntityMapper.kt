@@ -2,7 +2,7 @@ package com.saxenasachin.remote.mappers.reddit.repos
 
 import com.saxenasachin.data.models.SingleRepoEntity
 import com.saxenasachin.remote.mappers.EntityMapper
-import com.saxenasachin.remote.models.reddit.repo.GithubSingleRepo
+import com.saxenasachin.remote.models.repo.GithubSingleRepo
 import javax.inject.Inject
 
 /**

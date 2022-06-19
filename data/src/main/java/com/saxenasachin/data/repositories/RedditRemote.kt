@@ -2,6 +2,7 @@ package com.saxenasachin.data.repositories
 
 import com.saxenasachin.data.models.PullRequestEntity
 import com.saxenasachin.data.models.SingleRepoEntity
+import com.saxenasachin.data.models.redditpics.RedditPicEntity
 import com.saxenasachin.data.models.request.PullRequestGetBody
 import io.reactivex.Single
 
@@ -12,4 +13,6 @@ interface RedditRemote {
     fun getUserGitRepositories(username: String): Single<List<SingleRepoEntity>>
 
     fun getPullRequestList(pullRequestGetBody: PullRequestGetBody): Single<List<PullRequestEntity>>
+
+    fun getRedditPics(): Single<RedditPicEntity>
 }

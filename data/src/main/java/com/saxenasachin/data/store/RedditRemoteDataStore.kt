@@ -2,6 +2,7 @@ package com.saxenasachin.data.store
 
 import com.saxenasachin.data.models.PullRequestEntity
 import com.saxenasachin.data.models.SingleRepoEntity
+import com.saxenasachin.data.models.redditpics.RedditPicEntity
 import com.saxenasachin.data.models.request.PullRequestGetBody
 import com.saxenasachin.data.repositories.RedditDataStore
 import com.saxenasachin.data.repositories.RedditRemote
@@ -26,5 +27,9 @@ class RedditRemoteDataStore @Inject constructor(
         state: String
     ): Single<List<PullRequestEntity>> {
         return redditRemote.getPullRequestList(PullRequestGetBody(username, repoName, state))
+    }
+
+    override fun getRedditPics(): Single<RedditPicEntity> {
+        return redditRemote.getRedditPics()
     }
 }
