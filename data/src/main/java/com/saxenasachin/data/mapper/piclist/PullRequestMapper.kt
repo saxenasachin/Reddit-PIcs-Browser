@@ -22,7 +22,7 @@ class PicModelMapper @Inject constructor() : Mapper<RedditPicEntity, RedditPicMo
                             thumbnailWidth = childrenEntity.data.thumbnailWidth,
                             thumbnailHeight = childrenEntity.data.thumbnailHeight,
                             preview = ImagePreviewModel(
-                                images = childrenEntity.data.preview.images.map { previewImageEntity ->
+                                images = childrenEntity.data.preview?.images?.map { previewImageEntity ->
                                     PreviewImageModel(
                                         id = previewImageEntity.id,
                                         source = PreviewImageDetailModel(
@@ -59,7 +59,7 @@ class PicModelMapper @Inject constructor() : Mapper<RedditPicEntity, RedditPicMo
                             thumbnailWidth = childrenModel.data.thumbnailWidth,
                             thumbnailHeight = childrenModel.data.thumbnailHeight,
                             preview = ImagePreviewEntity(
-                                images = childrenModel.data.preview.images.map { previewImageModel ->
+                                images = childrenModel.data.preview.images?.map { previewImageModel ->
                                     PreviewImageEntity(
                                         id = previewImageModel.id,
                                         source = PreviewImageDetailEntity(

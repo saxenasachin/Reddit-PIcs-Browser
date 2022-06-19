@@ -7,14 +7,14 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.saxenasachin.redditpics.extensions.toast
-import com.saxenasachin.redditpics.ui.base.BaseBindingFragment
-import com.saxenasachin.redditpics.ui.user_repositories.adaptor.UserRepositoriesAdaptor
 import com.saxenasachin.presentation.viewmodel.GitDataViewModel
 import com.saxenasachin.presentation.viewmodel.RedditDataState
 import com.saxenasachin.presentation.views.views.SingleRepoView
 import com.saxenasachin.redditpics.R
 import com.saxenasachin.redditpics.databinding.FragmentRedditPicsBinding
+import com.saxenasachin.redditpics.extensions.toast
+import com.saxenasachin.redditpics.ui.base.BaseBindingFragment
+import com.saxenasachin.redditpics.ui.user_repositories.adaptor.UserRepositoriesAdaptor
 
 /**
 Created by Sachin Saxena on 19/06/22.
@@ -54,7 +54,7 @@ class RedditPicsFragment : BaseBindingFragment<GitDataViewModel, FragmentRedditP
     }
 
     private fun fetchRepositories() {
-        viewModel.getUserAllRepositories(userName.orEmpty())
+        viewModel.getRedditPics()
     }
 
     override fun setupObservers() {

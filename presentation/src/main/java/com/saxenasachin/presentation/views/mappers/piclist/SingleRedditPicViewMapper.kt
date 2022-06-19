@@ -19,7 +19,7 @@ class SingleRedditPicViewMapper @Inject constructor() : Mapper<RedditPicView, Re
                             thumbnailWidth = childrenModel.data.thumbnailWidth,
                             thumbnailHeight = childrenModel.data.thumbnailHeight,
                             preview = ImagePreviewView(
-                                images = childrenModel.data.preview.images.map { previewImageModel ->
+                                images = childrenModel.data.preview.images?.map { previewImageModel ->
                                     PreviewImageView(
                                         id = previewImageModel.id,
                                         source = PreviewImageDetailView(

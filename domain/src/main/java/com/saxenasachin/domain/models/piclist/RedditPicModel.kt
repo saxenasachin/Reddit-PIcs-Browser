@@ -25,7 +25,7 @@ data class ChildDataModel(
 )
 
 data class ImagePreviewModel(
-    val images: List<PreviewImageModel>
+    val images: List<PreviewImageModel>?
 )
 
 data class PreviewImageModel(

@@ -25,7 +25,7 @@ data class ChildDataView(
 )
 
 data class ImagePreviewView(
-    val images: List<PreviewImageView>
+    val images: List<PreviewImageView>?
 )
 
 data class PreviewImageView(

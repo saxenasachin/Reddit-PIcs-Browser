@@ -37,12 +37,12 @@ data class ChildData(
     val thumbnailHeight: Int,
 
     @SerializedName("preview")
-    val preview: ImagePreview
+    val preview: ImagePreview?
 )
 
 data class ImagePreview(
     @SerializedName("images")
-    val images: List<PreviewImage>
+    val images: List<PreviewImage>?
 )
 
 data class PreviewImage(

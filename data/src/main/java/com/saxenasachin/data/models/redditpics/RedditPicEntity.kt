@@ -21,11 +21,11 @@ data class ChildDataEntity(
     val thumbnail: String,
     val thumbnailWidth: Int,
     val thumbnailHeight: Int,
-    val preview: ImagePreviewEntity
+    val preview: ImagePreviewEntity?
 )
 
 data class ImagePreviewEntity(
-    val images: List<PreviewImageEntity>
+    val images: List<PreviewImageEntity>?
 )
 
 data class PreviewImageEntity(

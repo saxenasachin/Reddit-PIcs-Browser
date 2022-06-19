@@ -20,7 +20,7 @@ class RedditPicsEntityMapper @Inject constructor() :
                             thumbnailWidth = children.data.thumbnailWidth,
                             thumbnailHeight = children.data.thumbnailHeight,
                             preview = ImagePreviewEntity(
-                                images = children.data.preview.images.map { previewImage ->
+                                images = children.data.preview?.images?.map { previewImage ->
                                     PreviewImageEntity(
                                         id = previewImage.id,
                                         source = PreviewImageDetailEntity(
