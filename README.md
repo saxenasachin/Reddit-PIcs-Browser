@@ -1,9 +1,5 @@
 # Reddit-PIcs-Browser
 
-<p align="center">
- <center><img width="100%%"  src="files/android_clean_architecture_banner.png"></a></center>
-</p>
-
 # Android Clean Architecture 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/3ae0843cfd584f0582162c3c97000fd0)](https://app.codacy.com/manual/happysingh23828/Android-Clean-Architecture?utm_source=github.com&utm_medium=referral&utm_content=happysingh23828/Android-Clean-Architecture&utm_campaign=Badge_Grade_Settings)
 [![platform](https://img.shields.io/badge/platform-Android-yellow.svg)](https://www.android.com)
