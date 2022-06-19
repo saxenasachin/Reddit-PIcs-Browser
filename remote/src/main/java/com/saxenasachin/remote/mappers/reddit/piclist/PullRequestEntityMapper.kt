@@ -2,7 +2,7 @@ package com.saxenasachin.remote.mappers.reddit.piclist
 
 import com.saxenasachin.data.models.redditpics.*
 import com.saxenasachin.remote.mappers.EntityMapper
-import com.saxenasachin.remote.models.pics.RedditPic
+import com.saxenasachin.remote.models.picslist.RedditPic
 import javax.inject.Inject
 
 class RedditPicsEntityMapper @Inject constructor() :

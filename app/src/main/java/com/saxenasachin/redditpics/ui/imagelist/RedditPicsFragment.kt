@@ -9,18 +9,18 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.saxenasachin.presentation.viewmodel.GitDataViewModel
 import com.saxenasachin.presentation.viewmodel.RedditDataState
-import com.saxenasachin.presentation.views.views.SingleRepoView
-import com.saxenasachin.redditpics.R
+import com.saxenasachin.presentation.views.views.ChildDataView
+import com.saxenasachin.presentation.views.views.RedditPicView
 import com.saxenasachin.redditpics.databinding.FragmentRedditPicsBinding
 import com.saxenasachin.redditpics.extensions.toast
 import com.saxenasachin.redditpics.ui.base.BaseBindingFragment
-import com.saxenasachin.redditpics.ui.user_repositories.adaptor.UserRepositoriesAdaptor
+import com.saxenasachin.redditpics.ui.user_repositories.adaptor.RedditPicViewAdaptor
 
 /**
 Created by Sachin Saxena on 19/06/22.
  */
 class RedditPicsFragment : BaseBindingFragment<GitDataViewModel, FragmentRedditPicsBinding>(),
-    UserRepositoriesAdaptor.OnItemCLickListener {
+    RedditPicViewAdaptor.OnItemCLickListener {
 
     private val userName: String? by lazy {
         arguments?.getString(ARGS_USERNAME)
@@ -60,13 +60,13 @@ class RedditPicsFragment : BaseBindingFragment<GitDataViewModel, FragmentRedditP
     override fun setupObservers() {
         super.setupObservers()
         viewModel.stateObservable.observe(this, Observer {
-            updateState(it)
+            updatePicList(it)
         })
     }
 
-    private fun updateState(state: RedditDataState) {
+    private fun updatePicList(state: RedditDataState) {
         when (state) {
-            is RedditDataState.GetUsersRepositoriesSuccess -> showRepoList(state.lisOfRepos)
+            is RedditDataState.GetRedditPicsSuccess -> showRepoList(state.data)
             is RedditDataState.Error -> {
                 popUpFragment(state.message)
             }
@@ -74,16 +74,12 @@ class RedditPicsFragment : BaseBindingFragment<GitDataViewModel, FragmentRedditP
         }
     }
 
-    private fun showRepoList(lisOfRepos: List<SingleRepoView>) {
-        if (lisOfRepos.isNotEmpty()) {
-            binding.userRepoRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-            binding.userRepoRecyclerView.adapter = UserRepositoriesAdaptor(lisOfRepos, this)
-        } else {
-            popUpFragment(getString(R.string.info_no_repositories))
-        }
+    private fun showRepoList(redditPicView: RedditPicView) {
+        binding.userRepoRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+//        binding.userRepoRecyclerView.adapter = UserRepositoriesAdaptor(redditPicView, this)
     }
 
-    override fun onRepoClick(repoView: SingleRepoView) {
+    override fun onRepoClick(repoView: ChildDataView) {
 //        addFragmentBackStack(
 //            R.id.mainFragmentContainer,
 //            PullRequestsFragment.newInstance(userName.orEmpty(), repoView.repoName),

@@ -1,4 +1,4 @@
-package com.saxenasachin.remote.models.pics
+package com.saxenasachin.remote.models.picslist
 
 import com.google.gson.annotations.SerializedName
 
