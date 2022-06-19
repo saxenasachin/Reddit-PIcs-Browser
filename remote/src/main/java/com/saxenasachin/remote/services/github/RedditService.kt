@@ -20,4 +20,11 @@ interface RedditService {
         @Path("repo_name") repoName: String,
         @Query("state") state: String = "all"
     ): Single<List<GithubPullRequest>>
+
+    @GET("/r/pics/.json")
+    fun getRedditPics(
+        @Path("username") username: String,
+        @Path("repo_name") repoName: String,
+        @Query("state") state: String = "all"
+    ): Single<List<GithubPullRequest>>
 }
